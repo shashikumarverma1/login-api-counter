@@ -2,8 +2,15 @@ import { StatusBar } from 'expo-status-bar';
 import { useCallback, useState } from 'react';
 import { StyleSheet, TextInput, View, Text, TouchableOpacity } from 'react-native';
 import { CustomInputText } from '../component/customInputText';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../navigation/homeStack';
 
-export default function Login({navigation}) {
+type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
+
+type LoginProps = {
+  navigation: LoginScreenNavigationProp;
+};
+export default function Login({navigation}:LoginProps) {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const [emailErr, setEmailErr] = useState<string>("")
@@ -51,8 +58,8 @@ export default function Login({navigation}) {
             <StatusBar style="auto" />
             <Text style={styles.heading}>Login</Text>
             <View>
-                <CustomInputText onChange={handleEmail} value={email} err={emailErr} />
-                <CustomInputText onChange={handlePassword} value={password} isSecure={true} err={passwordErr} />
+                <CustomInputText onChange={handleEmail} value={email} err={emailErr} placeHolder="Enter your email ...."/>
+                <CustomInputText onChange={handlePassword} value={password} isSecure={true} err={passwordErr} placeHolder="Enter your password..."/>
                 <TouchableOpacity style={styles.buttontContainer} onPress={handleLogin}>
                     <Text style={styles.loginLable}>
                         Login

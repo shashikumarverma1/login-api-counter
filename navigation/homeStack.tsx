@@ -5,12 +5,12 @@ import { Posts } from '../screens/post';
 import { PostDetails } from '../screens/postDetails';
 
 const Stack = createStackNavigator();
-// export type RootStackParamList = {
-//   Dashboard: undefined;
-//   FlightDetailsScreen: { id: string };
-//   FlightListScreen:undefined;
-//   BookNowScreen:undefined
-// };
+export type RootStackParamList = {
+  Home: undefined;
+  Posts: { id: string };
+  PostDetails:undefined;
+  Counter:undefined
+};
 export const HomeStack = () => {
 
     return (

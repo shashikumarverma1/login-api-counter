@@ -1,22 +1,26 @@
 
 
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
+
 import { Header } from "../navigation/header";
+import LoadingScreen from "./loadingScreen";
 
 
 export const Posts = ({navigation}) => {
     const [posts, setPost] = useState<any>([])
+    const [loading , setLoading]=useState(false)
     const GetPosts =  () => {
+        setLoading(true)
         fetch("https://jsonplaceholder.typicode.com/posts").then((result)=>result.json()).then((res)=>{
-            console.log(res)
+           
             setPost(res)
+             setLoading(false)
         })
       
     }
     useEffect(() => {
-        // GetPosts()
+        GetPosts()
     }, [])
 
     const renderItem = ({ item }) => (
@@ -26,12 +30,12 @@ export const Posts = ({navigation}) => {
         </TouchableOpacity>
     );
 
-     const goback=()=>{
-    navigation.goBack()
+ if(loading){
+    return <LoadingScreen/>
  }
     return (
         <View style={styles.container}>
-          <Header navigation={navigation} heading={"Post"}/>
+          <Header navigation={navigation} heading={"Post        "}/>
             <FlatList
             style={{paddingBottom:80}}
                 data={posts}

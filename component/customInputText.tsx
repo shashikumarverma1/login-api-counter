@@ -5,15 +5,16 @@ type CustomInputTextPropsType = {
   value: string;
   err?: string; 
   isSecure?:boolean;
+  placeHolder:string
 };
 
-export const CustomInputText = ({onChange , value , err , isSecure}:CustomInputTextPropsType) => {
+export const CustomInputText = ({onChange , value , err , isSecure , placeHolder}:CustomInputTextPropsType) => {
 
     return (
         <View>
             <TextInput
                 style={styles.input}
-                placeholder="Enter email..."
+                placeholder={placeHolder}
                 placeholderTextColor="#aaa"
                 value={value}
                 onChangeText={onChange}

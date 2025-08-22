@@ -3,21 +3,16 @@
 import { useRoute } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
+import { Header } from "../navigation/header";
 
-export const PostDetails = ({navigation}) => {
+export const PostDetails = ({ navigation }) => {
     const item = useRoute().params
-console.log(item)
+    console.log(item)
     return (
         <View style={styles.container}>
-            <View style={styles.headContainer}>
-                <TouchableOpacity onPress={()=>navigation.goBack()}>
-                    <Text style={styles.back}>{`< back`}</Text>
-                </TouchableOpacity>
-                <Text style={styles.heading}>Posts Detail</Text>
-            </View>
-
+            <Header navigation={navigation} heading={'Posts Details'} />
             <View style={styles.card} >
-                 <Text style={styles.text}>user Id : {item?.userId}</Text>
+                <Text style={styles.text}>user Id : {item?.userId}</Text>
                 <Text style={styles.text}>{item?.title}</Text>
                 <Text style={styles.description}>{item?.body}</Text>
             </View>
@@ -27,15 +22,15 @@ console.log(item)
 
 
 const styles = StyleSheet.create({
-    headContainer:{
-           marginTop: 70,
-        flexDirection:"row",
-        justifyContent:"space-between",
-        width:'65%',
-    alignContent:"center"
+    headContainer: {
+        marginTop: 70,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: '65%',
+        alignContent: "center"
     },
     back: {
-     
+
         color: '#00000',
         fontSize: 20,
         fontWeight: "bold",
@@ -77,8 +72,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        paddingHorizontal: 20 , 
-      
+        paddingHorizontal: 20,
+
     },
 
     heading: {
