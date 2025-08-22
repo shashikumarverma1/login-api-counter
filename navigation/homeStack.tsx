@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from '../screens/loginScreen';
 import Counter from '../screens/counterScreen';
+import { Posts } from '../screens/post';
 
 
 
@@ -17,9 +18,9 @@ export const HomeStack =()=>{
 
   return (
     <Stack.Navigator screenOptions={{ animationEnabled: false, headerShown: false }}>
+               <Stack.Screen name="Posts" component={Posts} />
               <Stack.Screen name="Counter" component={Counter} />
-             <Stack.Screen name="Home" component={Login} />
-      
+             <Stack.Screen name="Home" component={Login} />  
     </Stack.Navigator>
   );
 }

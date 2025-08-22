@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useCallback, useState } from 'react';
 import { StyleSheet, TextInput, View, Text, TouchableOpacity } from 'react-native';
-import { CustomInputText } from '../navigation/component/customInputText';
+import { CustomInputText } from '../component/customInputText';
 
 export default function Login() {
     const [email, setEmail] = useState<string>("")
