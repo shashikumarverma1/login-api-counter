@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react';
 import { StyleSheet, TextInput, View, Text, TouchableOpacity } from 'react-native';
 import { CustomInputText } from '../component/customInputText';
 
-export default function Login() {
+export default function Login({navigation}) {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const [emailErr, setEmailErr] = useState<string>("")
@@ -43,6 +43,7 @@ export default function Login() {
         setPassword("");
         
     }
+    
 
     return (
         <View style={styles.container}>
@@ -57,12 +58,38 @@ export default function Login() {
                         Login
                     </Text>
                 </TouchableOpacity>
+
+                <View style={styles.buttonsContainer}>
+                         <TouchableOpacity style={styles.viewPostButton} onPress={()=>navigation.navigate("Posts")}>
+                    <Text style={styles.loginLable}>
+                        View All post
+                    </Text>
+                </TouchableOpacity>
+                     <TouchableOpacity style={styles.viewPostButton} onPress={()=>navigation.navigate("Counter")}>
+                    <Text style={styles.loginLable}>
+                        Go to Counter
+                    </Text>
+                </TouchableOpacity>
+                </View>
             </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    viewPostButton:{
+           marginTop: 20,
+        backgroundColor: '#000000',
+        paddingVertical: 14,
+        paddingHorizontal: 30,
+        borderRadius: 12,
+        width: "45%",
+      
+    },
+    buttonsContainer:{
+        flexDirection:"row" , 
+        justifyContent:"space-between"
+    },
     err: {
         color: 'red',
         fontSize: 18,

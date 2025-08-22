@@ -15,10 +15,10 @@ export const HomeStack = () => {
 
     return (
         <Stack.Navigator screenOptions={{ animationEnabled: false, headerShown: false }}>
+           <Stack.Screen name="Home" component={Login} />
             <Stack.Screen name="Posts" component={Posts} />
             <Stack.Screen name="PostDetails" component={PostDetails} />
-            <Stack.Screen name="Counter" component={Counter} />
-            <Stack.Screen name="Home" component={Login} />
+            <Stack.Screen name="Counter" component={Counter} />        
         </Stack.Navigator>
     );
 }

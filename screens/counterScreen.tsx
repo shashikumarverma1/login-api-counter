@@ -1,30 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
-import {  useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { Header } from '../navigation/header';
 
-export default function Counter() {
-const [counter, setCounter]=useState<number>(0)
- const increase=()=>{
-    setCounter(counter+1)
- }
-  const decrease=()=>{
-    setCounter(counter-1)
- }
+export default function Counter({ navigation }) {
+    const [counter, setCounter] = useState<number>(0)
+    const increase = () => {
+        setCounter(counter + 1)
+    }
+    const decrease = () => {
+        setCounter(counter - 1)
+    }
 
     return (
         <View style={styles.container}>
 
-            <StatusBar style="auto" />
-            <Text style={styles.heading}>Counter {counter}</Text>
+            <Header navigation={navigation} heading={`Counter : ${counter}`} />
             <View style={styles.buttonsContainer}>
                 <TouchableOpacity style={styles.buttontContainer} onPress={increase}>
                     <Text style={styles.loginLable}>
                         increase
                     </Text>
                 </TouchableOpacity>
-                 <TouchableOpacity style={styles.buttontContainer} onPress={decrease}>
+                <TouchableOpacity style={styles.buttontContainer} onPress={decrease}>
                     <Text style={styles.loginLable}>
-                        decreae
+                        decrease
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -33,11 +34,17 @@ const [counter, setCounter]=useState<number>(0)
 }
 
 const styles = StyleSheet.create({
-    buttonsContainer:{
-        flexDirection:"row",
-        justifyContent:"space-between"
+    back: {
+        color: '#f03636ff',
+        fontSize: 18,
+        fontWeight: 'bold',
+
     },
-  
+    buttonsContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between"
+    },
+
     loginLable: {
         color: '#fff',
         fontSize: 18,
@@ -57,8 +64,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         paddingHorizontal: 20,
-        paddingTop:50
-    
+        paddingTop: 50
+
     },
     input: {
         marginTop: 20,
