@@ -4,8 +4,14 @@ import { useRoute } from "@react-navigation/native";
 import { useEffect, useState } from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
 import { Header } from "../navigation/header";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../navigation/homeStack";
+type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'PostDetails'>;
 
-export const PostDetails = ({ navigation }) => {
+type PostDetailsProps = {
+  navigation: LoginScreenNavigationProp;
+};
+export const PostDetails = ({ navigation }:PostDetailsProps) => {
     const item = useRoute().params
     console.log(item)
     return (

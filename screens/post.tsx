@@ -5,9 +5,15 @@ import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native
 
 import { Header } from "../navigation/header";
 import LoadingScreen from "./loadingScreen";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../navigation/homeStack";
+type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Posts'>;
 
+type PostsProps = {
+  navigation: LoginScreenNavigationProp;
+};
 
-export const Posts = ({navigation}) => {
+export const Posts = ({navigation}:PostsProps) => {
     const [posts, setPost] = useState<any>([])
     const [loading , setLoading]=useState(false)
     const GetPosts =  () => {

@@ -1,10 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
+
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { Header } from '../navigation/header';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../navigation/homeStack';
 
-export default function Counter({ navigation }) {
+type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Counter'>;
+
+type CounterProps = {
+  navigation: LoginScreenNavigationProp;
+};
+export default function Counter({ navigation }:CounterProps) {
     const [counter, setCounter] = useState<number>(0)
     const increase = () => {
         setCounter(counter + 1)
